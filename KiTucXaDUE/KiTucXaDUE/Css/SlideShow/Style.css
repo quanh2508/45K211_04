@@ -1,0 +1,56 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+.slider {
+    height: 496px;
+    width: 1335px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slides {
+    height: 500px;
+    width: 500%;
+    display: flex;
+}
+
+    .slides input {
+        display: none;
+    }
+
+.slide {
+    width: 20%;
+    transition: 2s;
+}
+
+    .slide img {
+        height: 496px;
+        width: 1335px;
+    }
+
+/*css for manual slide navigation*/
+
+.navigation-manual {
+    position: absolute;
+    width: 800px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+    top: 575px;
+    left: 0px;
+}
+
+.manual-btn {
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
