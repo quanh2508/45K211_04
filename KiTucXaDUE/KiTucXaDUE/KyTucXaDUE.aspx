@@ -6,16 +6,13 @@
 <head runat="server">
     <title>Ký túc xá Đại học Kinh tế Đà Nẵng</title>
     <style type="text/css">
-        .auto-style5 {
-            color: #E7DFD8;
-        }
         .auto-style6 {
             width: 950px;
             height: 211px;
-            margin-left: 124px;
+            margin-left: 168px;
         }
     </style>
-     <!-- <link href="Css/SlideShow/Style.css" rel="stylesheet" /> -->
+    <link href="Css/SlideShow/Style.css" rel="stylesheet" /> 
 </head>
 <body>
     <form id="form1" runat="server">
@@ -63,18 +60,17 @@
             <!--manual navigation end -->
             <img src="Images/GioiThieu.png" style="margin-left: 159px" />
         </div>
-        <asp:Panel ID="DoiTuong" runat="server" Height="430px">
+        <asp:Panel ID="DoiTuong" runat="server" Height="430px" Width="1351px">
         </asp:Panel>
-        <asp:Panel ID="QuyTrinh" runat="server" Height="550px" style="background-color: #F5F5F5" Width="1365px">
+        <asp:Panel ID="QuyTrinh" runat="server" Height="550px" style="background-color: #F5F5F5" Width="1353px">
             <img src="Images/QuyTrinh.png" style="height: 446px; width: 1071px; margin-left: 149px"/>
         </asp:Panel>
-        <asp:Panel ID="Phi" runat="server" Height="300px" Width="1363px" style="background-color: #F5F5F5">
+        <asp:Panel ID="Phi" runat="server" Height="300px" Width="1353px" style="background-color: #F5F5F5">
             <img class="auto-style6" src="Images/CacKhoanPhi.png" />
         </asp:Panel>
-        <asp:Panel ID="Footer" runat="server" Height="135px" style="background-color: #25639B; margin-left: 0px;" Width="1333px">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="auto-style5"><strong>Trung tâm Hỗ trợ sinh viên và Quan hệ doanh nghiệp</strong></span><br class="auto-style5" /> &nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style5">Trường Đại học Kinh Tế - Đại học Đà Nẵng<br /> &nbsp;&nbsp;&nbsp;&nbsp; 71 Ngũ Hành Sơn, TP Đà Nẵng<br /> &nbsp;&nbsp;&nbsp;&nbsp; kytucxa@due.edu.vn<br /> &nbsp;&nbsp;&nbsp;&nbsp; ĐT: 0236.3953.773</span><br />
-            <br />
-            <span class="JsGRdQ" style="color: rgb(244, 238, 226); font-weight: 400; font-style: normal; text-decoration: none; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;SSERC - Đồng hành cùng Sinh viên và Doanh nghiệp&quot;</span><span class="JsGRdQ white-space-prewrap" style="color: rgb(244, 238, 226); font-weight: 400; font-style: normal; text-decoration: none;"> </span>
+        <asp:Panel ID="Footer" runat="server" Height="234px" style="background-color: #25639B; margin-left: 0px;" Width="1354px">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="Images/Footer.png" />
         </asp:Panel>
     </form>
 </body>

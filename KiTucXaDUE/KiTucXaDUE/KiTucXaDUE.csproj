@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Css\SlideShow\Style.css" />
     <Content Include="Images\CacKhoanPhi.png" />
+    <Content Include="Images\Footer.png" />
     <Content Include="Images\GioiThieu.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\QuyTrinh.png" />
