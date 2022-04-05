@@ -1,0 +1,201 @@
+﻿@model KTX.Models.Student
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    ViewBag.Content = "ĐĂNG KÝ CHỖ Ở TẠI KÝ TÚC XÁ TRƯỜNG ĐẠI HỌC KINH TẾ - ĐẠI HỌC ĐÀ NẴNG";
+    ViewBag.Note = "Đề nghị sinh viên điền thông tin trung thực và chính xác";
+    
+}
+<div class="text-center">
+    <h3>@ViewBag.Content</h3>
+    <h4>@ViewBag.Note</h4>
+
+    @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "stdform" }))
+    {
+
+        <div class="text-danger">
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+        </div>
+
+        @Html.HiddenFor(model => model.StdID)
+
+        <div class="card mx-auto my-3 text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                THÔNG TIN CÁ NHÂN
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StdName, "Họ và tên (*)")
+                            @Html.TextBoxFor(model => model.StdName, new { @class = "form-control", @type = "text", @placeholder = "Enter name", @required = true })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StdDOB, "Ngày sinh")
+                            @Html.TextBoxFor(model => model.StdDOB, new { @class = "form-control", @type = "date", @placeholder = "Enter DOB" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StdEmail, "Email")
+                            @Html.TextBoxFor(model => model.StdEmail, new { @class = "form-control", @type = "email", @placeholder = "Enter Email" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StdID, "Số CMND/CCCD")
+                            @Html.TextBoxFor(model => model.StdID, new { @class = "form-control", @type = "text", @placeholder = "Enter ID", @onkeypress = "return isNumber(event)", @onpaste = "return false;" })
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StdPhone, "Số điện thoại")
+                            @Html.TextBoxFor(model => model.StdPhone, new { @class = "form-control", @type = "text", @placeholder = "Enter Phone", @onkeypress = "return isNumber(event)", @onpaste = "return false;" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StdSex, "Giới tính")
+                            @Html.DropDownListFor(model => model.StdSex,
+                                                            new List<SelectListItem> {
+                                                                new SelectListItem { Value = "0" , Text = "Chọn" },
+                                                                new SelectListItem { Value = "1" , Text = "Nam" },
+                                                                new SelectListItem { Value = "2" , Text = "Nữ" }
+                                                            }, 
+                                                            new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StdUrl, "Link Facebook")
+                            @Html.TextBoxFor(model => model.StdUrl, new { @class = "form-control", @type = "text", @placeholder = "Enter URL" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card mx-auto my-3 text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                THÔNG TIN LIÊN LẠC VỚI PHỤ HUYNH
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputAddress">Địa chỉ liên lạc của gia đình</label>
+                </div>
+                <div class="container">
+                    <div class="form-group row">
+                        <div class="col-sm pl-0">
+                            @Html.DropDownListFor(model => model.StdSex,
+                                                                new List<SelectListItem> {
+                                                                    new SelectListItem { Value = "0" , Text = "--- Tỉnh / Thành phố ---" },
+                                                                    new SelectListItem { Value = "1" , Text = "Nam" },
+                                                                    new SelectListItem { Value = "2" , Text = "Nữ" }
+                                                                },
+                                                                new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm">
+                            @Html.DropDownListFor(model => model.StdSex,
+                                                               new List<SelectListItem> {
+                                                                   new SelectListItem { Value = "0" , Text = "--- Quận/ Huyện ---" },
+                                                                   new SelectListItem { Value = "1" , Text = "Nam" },
+                                                                   new SelectListItem { Value = "2" , Text = "Nữ" }
+                                                               },
+                                                               new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm pr-0">
+                            @Html.DropDownListFor(model => model.StdSex,
+                                                                new List<SelectListItem> {
+                                                                    new SelectListItem { Value = "0" , Text = "--- Xã / Phường ---" },
+                                                                    new SelectListItem { Value = "1" , Text = "Nam" },
+                                                                    new SelectListItem { Value = "2" , Text = "Nữ" }
+                                                                },
+                                                                new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label for="inputAddress">Địa chỉ chi tiết</label>
+                    <input type="text" class="form-control" id="inputAddress">
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentName">Họ tên phụ huynh (Bố hoặc mẹ)</label>
+                    <input type="text" class="form-control" id="inputParrentName">
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentPhone">Số điện thoại phụ huynh (Bố hoặc mẹ)</label>
+                    <input type="text" class="form-control" id="inputParrentPhone">
+                </div>
+            </div>
+        </div>
+
+        <div class="card m-auto text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                THÔNG TIN NGÀNH TRÚNG TUYỂN
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputParrentPhone">Ngành trúng tuyển</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option></option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentPhone">Chuyên ngành dự kiến đăng ký (Nếu có)</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option></option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mx-auto my-3 text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                ĐỐI TƯỢNG ƯU TIÊN
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputParrentPhone">Đối tượng ưu tiên</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option></option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentPhone">Minh chứng</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary " value="Submit" />
+
+    }
+
+</div>
+
+<script type="text/javascript">
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ((charCode > 31 && charCode < 48) || charCode > 57) {
+            return false;
+        }
+        return true;
+    }
+</script>
