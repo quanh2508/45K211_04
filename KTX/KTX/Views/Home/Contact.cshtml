@@ -4,7 +4,7 @@
     ViewBag.Title = "Đăng nhập";
     ViewBag.Content = "ĐĂNG KÝ CHỖ Ở TẠI KÝ TÚC XÁ TRƯỜNG ĐẠI HỌC KINH TẾ - ĐẠI HỌC ĐÀ NẴNG";
     ViewBag.Note = "Đề nghị sinh viên điền thông tin trung thực và chính xác";
-    
+
 }
 <div class="text-center">
     <h3>@ViewBag.Content</h3>
@@ -59,10 +59,10 @@
                             @Html.LabelFor(model => model.StdSex, "Giới tính")
                             @Html.DropDownListFor(model => model.StdSex,
                                                             new List<SelectListItem> {
-                                                                new SelectListItem { Value = "0" , Text = "Chọn" },
+                                                                new SelectListItem { Value = "0" , Text = "" },
                                                                 new SelectListItem { Value = "1" , Text = "Nam" },
                                                                 new SelectListItem { Value = "2" , Text = "Nữ" }
-                                                            }, 
+                                                            },
                                                             new { @class = "form-control form-control-lg" })
                             @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
                         </div>
@@ -91,8 +91,10 @@
                             @Html.DropDownListFor(model => model.StdSex,
                                                                 new List<SelectListItem> {
                                                                     new SelectListItem { Value = "0" , Text = "--- Tỉnh / Thành phố ---" },
-                                                                    new SelectListItem { Value = "1" , Text = "Nam" },
-                                                                    new SelectListItem { Value = "2" , Text = "Nữ" }
+                                                                    new SelectListItem { Value = "1" , Text = "Đã Nẵng" },
+                                                                    new SelectListItem { Value = "2" , Text = "Quảng Nam" },
+                                                                    new SelectListItem { Value = "1" , Text = "Huế" },
+                                                                    new SelectListItem { Value = "1" , Text = "Quảng Trị" }
                                                                 },
                                                                 new { @class = "form-control form-control-lg" })
                             @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
@@ -101,8 +103,13 @@
                             @Html.DropDownListFor(model => model.StdSex,
                                                                new List<SelectListItem> {
                                                                    new SelectListItem { Value = "0" , Text = "--- Quận/ Huyện ---" },
-                                                                   new SelectListItem { Value = "1" , Text = "Nam" },
-                                                                   new SelectListItem { Value = "2" , Text = "Nữ" }
+                                                                   new SelectListItem { Value = "1" , Text = "Ngũ Hành Sơn" },
+                                                                   new SelectListItem { Value = "2" , Text = "Cẩm Lệ" },
+                                                                   new SelectListItem { Value = "1" , Text = "Liên Chiểu" },
+                                                                   new SelectListItem { Value = "1" , Text = "Sơn Trà" },
+                                                                   new SelectListItem { Value = "1" , Text = "Hải Châu" },
+                                                                   new SelectListItem { Value = "1" , Text = "Miền Bắc" },
+                                                                   new SelectListItem { Value = "1" , Text = "Thanh Khê" }
                                                                },
                                                                new { @class = "form-control form-control-lg" })
                             @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
@@ -111,15 +118,26 @@
                             @Html.DropDownListFor(model => model.StdSex,
                                                                 new List<SelectListItem> {
                                                                     new SelectListItem { Value = "0" , Text = "--- Xã / Phường ---" },
-                                                                    new SelectListItem { Value = "1" , Text = "Nam" },
-                                                                    new SelectListItem { Value = "2" , Text = "Nữ" }
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa Thọ Đông" },
+                                                                    new SelectListItem { Value = "2" , Text = "Mỹ An" },
+                                                                    new SelectListItem { Value = "1" , Text = "An Khê" },
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa Khê" },
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa Hải" },
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa Khánh" },
+                                                                    new SelectListItem { Value = "1" , Text = "Khuê Trung" },
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa An" },
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa Xuân" },
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa Phát" },
+                                                                    new SelectListItem { Value = "1" , Text = "Hòa Quý" },
+                                                                    new SelectListItem { Value = "1" , Text = "Nại Hiên Đông" },
+                                                                    new SelectListItem { Value = "1" , Text = "Thuận Phước" }
                                                                 },
                                                                 new { @class = "form-control form-control-lg" })
                             @Html.ValidationMessageFor(model => model.StdSex, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
-              
+
                 <div class="form-group">
                     <label for="inputAddress">Địa chỉ chi tiết</label>
                     <input type="text" class="form-control" id="inputAddress">
@@ -143,17 +161,60 @@
                 <div class="form-group">
                     <label for="inputParrentPhone">Ngành trúng tuyển</label>
                     <select class="form-control" id="exampleFormControlSelect1">
-                        <option></option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option>Kinh doanh Quốc tế</option>
+                        <option>Quản trị Kinh doanh</option>
+                        <option>Quản trị Dịch vụ Du lịch & Lữ hành</option>
+                        <option>Kinh tế</option>
+                        <option>Thống kê - Kinh tế</option>
+                        <option>Kế toán</option>
+                        <option>Tài chính Ngân hàng</option>
+                        <option>Kinh doanh Thương mại</option>
+                        <option>Quản lý Nhà nước</option>
+                        <option>Marketing</option>
+                        <option>Luật Kinh tế</option>
+                        <option>Hệ thống thông tin quản lý</option>
+                        <option>Quản trị nhân lực</option>
+                        <option>Kiểm toán</option>
+                        <option>Luật</option>
+                        <option>Thương mại điện tử</option>
+                        <option>Quản trị Khách sạn</option>
+                        <option>Khoa học dữ liệu & Phân tích kinh doanh</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="inputParrentPhone">Chuyên ngành dự kiến đăng ký (Nếu có)</label>
                     <select class="form-control" id="exampleFormControlSelect1">
-                        <option></option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option>Ngoại thương (K01)</option>
+                        <option>Quản trị kinh doanh tổng quát (K02)</option>
+                        <option>Quản trị kinh doanh du lịch (K03)</option>
+                        <option>Kinh tế phát triển (K04)</option>
+                        <option>Thống kê Kinh tế - Xã hội (K05)</option>
+                        <option>Kế toán (K06)</option>
+                        <option>Ngân hàng (K07)</option>
+                        <option>Quản trị kinh doanh thương mại (K08)</option>
+                        <option>Kinh tế chính trị (K09)</option>
+                        <option>Kinh tế và quản lý công (K11)</option>
+                        <option>Quản trị Marketing (K12)</option>
+                        <option>Luật kinh doanh (K13)</option>
+                        <option>Tin học quản lý (K14)</option>
+                        <option>Tài chính doanh nghiệp (K15)</option>
+                        <option>Quản trị tài chính (K16)</option>
+                        <option>Quản trị nguồn nhân lực (K17)</option>
+                        <option>Kiểm toán (K18)</option>
+                        <option>Luật học (K19)</option>
+                        <option>Kinh tế đầu tư (K20)</option>
+                        <option>Quản trị Hệ thống thông tin (K21)</option>
+                        <option>Thương mại điện tử (K22)</option>
+                        <option>Quản trị khách sạn (K23)</option>
+                        <option>Tài chính công (K24)</option>
+                        <option>Quản trị chuỗi cung ứng và Logistics (K25)</option>
+                        <option>Quản trị sự kiện (K26)</option>
+                        <option>Hành chính công (K27)</option>
+                        <option>Truyền thông Marketing (K28)</option>
+                        <option>Khoa học dữ liệu và Phân tích kinh doanh (K29)</option>
+                        <option>Kinh doanh số (K30)</option>
+                        <option>Marketing số (K31)</option>
+                        <option>Kinh tế quốc tế (K32)</option>
                     </select>
                 </div>
             </div>
@@ -167,9 +228,19 @@
                 <div class="form-group">
                     <label for="inputParrentPhone">Đối tượng ưu tiên</label>
                     <select class="form-control" id="exampleFormControlSelect1">
-                        <option></option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option>ĐT1: SV đạt giải Quốc gia hoặc Quốc tế</option>
+                        <option>ĐT2: SV là con của liệt sỹ</option>
+                        <option>ĐT3: SV là con của thương binh, bệnh binh</option>
+                        <option>ĐT4: SV người dân tộc thiểu số</option>
+                        <option>ĐT5: SV mồ côi cả cha lẫn mẹ</option>
+                        <option>ĐT6: SV là người khuyết tật</option>
+                        <option>ĐT7: SV có hộ khẩu thuộc xã miền núi và gia đình có hoàn cảnh khó khăn</option>
+                        <option>ĐT8: SV thuộc gia đình hộ nghèo</option>
+                        <option>ĐT9: SV thuộc hộ Cận nghèo</option>
+                        <option>ĐT10: SV mồ côi Cha hoặc Mẹ, gia đình có hoàn cảnh khó khăn</option>
+                        <option>ĐT11: SV có hộ khẩu thuộc Xã Bãi ngang ven biển có hoàn cảnh khó khăn</option>
+                        <option>ĐT12: SV có hộ khẩu thuộc XÃ miền núi</option>
+                        <option>ĐT13: SV có hộ khẩu thuộc XÃ bãi ngang ven biển</option>
                     </select>
                 </div>
                 <div class="form-group">

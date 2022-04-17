@@ -1,20 +1,21 @@
 ﻿use WebKTX
-Create table ThongTinSV (
-							MaSV char(12) not null,
-							HoTen nvarchar(100),
-							NgaySinh date,
-							GioiTinh bit,
-							SDT varchar(13),
-							Gmail varchar(70),
-							QueQuan nvarchar(50),											 
-							NganhTT nvarchar(100),
-							ChuyenNganh nvarchar(100),
-							LinkFB nvarchar(150),
-							DTUuTien int,
-							MinhChung binary,
-							primary key (MaSV)
+go
+Create table Students (
+							StudentId char(12) not null,
+							StudentName nvarchar(100),
+							StudentDob datetime,
+							StudentSex bit,
+							StudentPhone varchar(13),
+							StudentEmail varchar(70),
+							StudentAddress nvarchar(50),											 
+							StudentSpecialized nvarchar(100),
+							StudentMajors nvarchar(100),
+							StudentLink nvarchar(150),
+							StudentPrioritize int,
+							StudentPrioritizeImage nvarchar(150),
+							primary key (StudentId)
 						 )
-Insert into ThongTinSV  (MaSV, HoTen, NgaySinh, GioiTinh, SDT, Gmail, QueQuan, NganhTT, ChuyenNganh, LinkFB, DTUuTien)
+Insert into Students  (StudentId, StudentName, StudentDob, StudentSex, StudentPhone, StudentEmail, StudentAddress, StudentSpecialized, StudentMajors, StudentLink, StudentPrioritize)
 values
 		('201121521102', N'Nguyễn Ngọc Quỳnh Anh','2002-08-25', 1, '0829611396', 'quynhanhtp97@gmail.com', N'Huế', N'Du lịch', N'Quản trị khách sạn', 'https://www.facebook.com/profile.php?id=100006011952734', 3),
 		('191121521108', N'Phạm Thị Thanh Hà', '2001-01-22', 1, '0845787483', 'phamthithanhhachv@gmail.com', N'Gia Lai', N'Quản trị kinh doanh', N'Quản trị kinh doanh', 'https://www.facebook.com/iii.iii.35', 12),
@@ -24,15 +25,15 @@ values
 
 
 
-Create table ThongTinPhuHuynh (
-								MaSV char(12) not null,
-								HoTenCha nvarchar(100),							   							   
-								NgheNghiepCha nvarchar,
-								SDTCha varchar(13),
-								HoKhauTT nvarchar(150),
-								HoTenMe nvarchar(100),							   							   
-								NgheNghiepMe nvarchar,
-								SDTMe varchar(13)
+Create table Parrents (
+								StudentId char(12) not null,
+								DadName nvarchar(100),							   							   
+								DadJob nvarchar,
+								DadPhone varchar(13),
+								Address nvarchar(150),
+								MomName nvarchar(100),							   							   
+								MomJob nvarchar,
+								MomPhone varchar(13)
 							   )
 
 
