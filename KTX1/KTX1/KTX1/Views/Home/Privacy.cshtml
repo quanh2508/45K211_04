@@ -1,0 +1,1643 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+@{
+     ViewData["Title"] = "Đăng nhập";
+     ViewData["Content"] = "ĐĂNG KÝ CHỖ Ở TẠI KÝ TÚC XÁ TRƯỜNG ĐẠI HỌC KINH TẾ - ĐẠI HỌC ĐÀ NẴNG";
+     ViewData["Note"] = "Đề nghị sinh viên điền thông tin trung thực và chính xác";
+    
+}
+<div class="text-center">
+    <h3>@ViewBag.Content</h3>
+    <h3 id="status" hidden>@ViewBag.status</h3>
+    <h4><span class="inputRequire">*</span> @ViewBag.Note</h4>
+
+    @using (Html.BeginForm("Insert", "Home", FormMethod.Post, new { id = "stdform" }))
+    {
+
+        <div class="card mx-auto my-3 text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                THÔNG TIN CÁ NHÂN
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                                <label for="inputName">Họ và tên (<span class="inputRequire">*</span>) </label>
+                                <input type="text" class="form-control" id="inputName" name="StudentName" required>
+                        </div>
+
+                         <div class="form-group">
+                                <label for="inputDob">Ngày sinh (<span class="inputRequire">*</span>)</label>
+                                <input type="date" class="form-control" id="inputDob"  name="StudentDob" required>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="inputEmail">Email (<span class="inputRequire">*</span>)</label>
+                                <input type="email" class="form-control" id="inputEmail"  name="StudentEmail" required>
+                        </div>
+
+                         <div class="form-group">
+                                <label for="inputEmail">Số CMND/CCCD (<span class="inputRequire">*</span>)</label>
+                                <input type="text" class="form-control" id="inputID" maxlength="12" minlength="9"  name="StudentId" required onpast="return false;" onKeyPress="return isNumber(event);">
+                                <input type="text" hidden class="form-control" id="ID" maxlength="12" minlength="9" name="Id" required onpast="return false;" onKeyPress="return isNumber(event);">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                         <div class="form-group">
+                                <label for="inputPhone">Số điện thoại (<span class="inputRequire">*</span>)</label>
+                                <input type="text" class="form-control" id="inputPhone"  maxlength="13" minlength="10" name="StudentPhone" required onpast="return false;" onKeyPress="return isNumber(event);">
+                        </div>
+
+                        <label for="inputSex">Giới tính (<span class="inputRequire">*</span>)</label>
+                        <select class="form-control" id="inputSex" required name="StudentSex">
+                            <option  selected></option>
+                            <option value="true">Nam</option>
+                            <option value="false">Nữ</option>
+                        </select>
+
+                        
+                         <div class="form-group">
+                                <label for="inputURL">Link Facebook (<span class="inputRequire">*</span>)</label>
+                                <input type="url" class="form-control" id="inputURL"  name="StudentLink" required>
+                        </div>
+         
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card mx-auto my-3 text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                THÔNG TIN LIÊN LẠC VỚI PHỤ HUYNH
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputAddress">Địa chỉ liên lạc của gia đình (<span class="inputRequire">*</span>)</label>
+                </div>
+                <div class="container">
+                    <div class="form-group row">
+                        <div class="col-sm pl-0">
+                             <select class="form-control" id="inputAddress1"  name="StudentAddress1" required>
+                                <option value = "0" selected >--- Tỉnh / Thành phố ---</option>
+                                <option value="43">Đà Nẵng</option>
+                                <option value="81">Gia Lai</option>
+                                <option value="36">Thanh Hóa</option>
+                                <option value="37">Nghệ An</option>
+                                <option value="38">Hà Tĩnh</option>
+                                <option value="73">Quảng Bình</option>
+                                <option value="74">Quảng Trị</option>
+                                <option value="75">Thừa Thiên Huế</option>
+                                <option value="76">Quảng Ngãi</option>
+                                <option value="77">Bình Định</option>
+                                <option value="92">Quảng Nam</option>
+                            </select>
+                
+                        </div>
+                        <div class="col-sm">
+                             <select class="form-control" id="inputAddress2" name="StudentAddress2" required>
+                                <option value = "0" selected >--- Quận/ Huyện ---</option>
+                            </select>
+                 
+                        </div>
+                        <div class="col-sm pr-0">
+                             <select class="form-control" id="inputAddress3" name="StudentAddress3" required>
+                                <option value = "0" selected >--- Xã / Phường ---</option>
+                            </select>
+                    
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label for="inputAddress">Địa chỉ chi tiết (<span class="inputRequire">*</span>)</label>
+                    <input type="text" class="form-control" id="inputAddress" name="StudentAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentName">Họ tên phụ huynh (Bố hoặc mẹ) (<span class="inputRequire">*</span>)</label>
+                    <input type="text" class="form-control" id="inputParrentName" name="DadName" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentPhone">Số điện thoại phụ huynh (Bố hoặc mẹ) (<span class="inputRequire">*</span>)</label>
+                    <input type="text" class="form-control" id="inputParrentPhone" maxlength="13" minlength="10"  name="DadPhone" required onpast="return false;" onKeyPress="return isNumber(event);">
+                </div>
+            </div>
+        </div>
+
+        <div class="card m-auto text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                THÔNG TIN NGÀNH TRÚNG TUYỂN
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputParrentPhone">Ngành trúng tuyển</label>
+                    <select class="form-control" id="inputSpecialized" name="StudentSpecialized" >
+                        <option selected></option>
+                        <option value = "1">Kinh Doanh Quốc Tế</option>
+                        <option value = "2">Quản Trị Kinh Doanh</option>
+                        <option value = "3">Quản trị dịch vụ du lịch và lữ hành</option>
+                        <option value = "4">Kinh Tế</option>
+                        <option value = "5">Thống kê Kinh tế</option>
+                        <option value = "6">Kế Toán</option>
+                        <option value = "7">Tài chính ngân hàng</option>
+                        <option value = "8">Kinh doanh thương mại</option>
+                        <option value = "9">Quản lý nhà nước</option>
+                        <option value = "10">Marketing</option>
+                        <option value = "11">Luật Kinh tế</option>
+                        <option value = "12">Hệ thống thông tin quản lý</option>
+                        <option value = "13">Quản trị nhân lực</option>
+                        <option value = "14">Kiểm toán</option>
+                        <option value = "15">Luật</option>
+                        <option value = "16">Thương mại điện tử</option>
+                        <option value = "17">Quản trị Khách sạn</option>
+                        <option value = "18">Khoa học dữ liệu & Phân tích kinh doanh</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentPhone">Chuyên ngành dự kiến đăng ký (Nếu có)</label>
+                    <select class="form-control" id="inputMajors" name="StudentMajors">
+                        <option selected></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mx-auto my-3 text-left" style="max-width: 70%;">
+            <div class="card-header bg-primary">
+                ĐỐI TƯỢNG ƯU TIÊN
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputPrioritize">Đối tượng ưu tiên (<span class="inputRequire">*</span>)</label>
+                    <select class="form-control" id="inputPrioritize" name="StudentPrioritize" required>
+                        <option value = "1">ĐT1: Sinh viên đạt giải Quốc gia hoặc Quốc tế</option>
+                        <option value = "2">ĐT2: Sinh viên là con của liệt sỹ</option>
+                        <option value = "3">ĐT3: Sinh viên là con của thương binh</option>
+                        <option value = "4">ĐT4: Sinh viên người dân tộc thiểu số</option>
+                        <option value = "5">ĐT5: Sinh viên mồ côi cả cha lẫn mẹ</option>
+                        <option value = "6">ĐT6: Sinh viên là người khuyết tật</option>
+                        <option value = "7">ĐT7: Sinh viên có hộ khẩu thuộc xã miền núi và gia đình có HCKK</option>
+                        <option value = "8">ĐT8: Sinh viên thuộc gia đình hộ Nghèo</option>
+                        <option value = "9">ĐT9: Sinh viên thuộc hộ Cận nghèo</option>
+                        <option value = "10">ĐT10: Sinh viên mồ côi Cha hoặc Mẹ và gia đình có HCKK</option>
+                        <option value = "11">ĐT11: Sinh viên có hộ khẩu thuộc Xã Bãi ngang ven biển có HCKK</option>
+                        <option value = "12">ĐT12: Sinh viên có hộ khẩu thuộc Xã miền núi</option>
+                        <option value = "13">ĐT13: Sinh viên có hộ khẩu thuộc Xã bãi ngang ven biển</option>                    
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputParrentPhone">Minh chứng (<span class="inputRequire">*</span>)</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" name="StudentPrioritizeImage" required>
+                        <label class="custom-file-label" id="labelFile" for="customFile">Choose file</label>
+                    </div>
+                </div>
+
+                 <div class="form-group">
+                    <label for="inputStudentNote">Ghi chú (Nếu có)</label>
+                    <input type="text" class="form-control" id="inputStudentNote" name="StudentNote">
+                </div>
+
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary " value="Đăng ký" />
+
+    }
+
+</div>
+
+<script type="text/javascript">
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ((charCode > 31 && charCode < 48) || charCode > 57) {
+            return false;
+        }
+        return true;
+    }
+
+    function validateDateInput() {
+        document.getElementById('inputDob').min = "1000-01-01";
+        document.getElementById('inputDob').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
+    }
+
+    function updateValueMajor() 
+    {
+        var inputSpecialized = document.getElementById('inputSpecialized');
+        if(inputSpecialized)
+        {
+            inputSpecialized.addEventListener('change', function()
+            {
+                  var inputMajors = document.getElementById('inputMajors');
+                  if(inputMajors)
+                  {
+                        inputMajors.innerHTML = "";
+                        switch (inputSpecialized.value) 
+                        {
+                           case "1":
+                                var opt = document.createElement('option');
+                                opt.value = 1;
+                                opt.innerHTML = "Ngoại thương (K01)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "2":
+                                var opt = document.createElement('option');
+                                opt.value = 2;
+                                opt.innerHTML = "Quản trị kinh doanh tổng quát (K02)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 16;
+                                opt.innerHTML = "Quản trị tài chính (K16)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 25;
+                                opt.innerHTML = "Quản trị chuỗi cung ứng và Logistics (K25)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 30;
+                                opt.innerHTML = "Kinh doanh số (K30)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "3":
+                                var opt = document.createElement('option');
+                                opt.value = 3;
+                                opt.innerHTML = "Quản trị kinh doanh du lịch (K03)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 26;
+                                opt.innerHTML = "Quản trị sự kiện (K26)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "4":
+                                var opt = document.createElement('option');
+                                opt.value = 4;
+                                opt.innerHTML = "Kinh tế phát triển (K04)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 11;
+                                opt.innerHTML = "Kinh tế và quản lý công (K11)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 20;
+                                opt.innerHTML = "Kinh tế đầu tư (K20)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 32;
+                                opt.innerHTML = "Kinh tế quốc tế (K32)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "5":
+                                var opt = document.createElement('option');
+                                opt.value = 5;
+                                opt.innerHTML = "Thống kê Kinh tế - Xã hội (K05)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "6":
+                                var opt = document.createElement('option');
+                                opt.value = 6;
+                                opt.innerHTML = "Kế toán (K06)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "7":
+                                var opt = document.createElement('option');
+                                opt.value = 7;
+                                opt.innerHTML = "Ngân hàng (K07)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 15;
+                                opt.innerHTML = "Tài chính doanh nghiệp (K15)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 24;
+                                opt.innerHTML = "Tài chính công (K24)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "8":
+                                var opt = document.createElement('option');
+                                opt.value = 8;
+                                opt.innerHTML = "Quản trị kinh doanh thương mại (K08)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "9":
+                                var opt = document.createElement('option');
+                                opt.value = 9;
+                                opt.innerHTML = "Kinh tế chính trị (K09)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 27;
+                                opt.innerHTML = "Hành chính công (K27)";
+                                inputMajors.appendChild(opt); 
+                                break;
+                           case "10":
+                                var opt = document.createElement('option');
+                                opt.value = 12;
+                                opt.innerHTML = "Quản trị Marketing (K12)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 28;
+                                opt.innerHTML = "Truyền thông Marketing (K28)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 31;
+                                opt.innerHTML = "Marketing số (K31)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "11":
+                                var opt = document.createElement('option');
+                                opt.value = 13;
+                                opt.innerHTML = "Luật kinh doanh (K13)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "12":
+                                var opt = document.createElement('option');
+                                opt.value = 14;
+                                opt.innerHTML = "Tin học quản lý (K14)";
+                                inputMajors.appendChild(opt);
+                                var opt = document.createElement('option');
+                                opt.value = 21;
+                                opt.innerHTML = "Quản trị Hệ thống thông tin (K21)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "13":
+                                var opt = document.createElement('option');
+                                opt.value = 17;
+                                opt.innerHTML = "Quản trị nguồn nhân lực (K17)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "14":
+                                var opt = document.createElement('option');
+                                opt.value = 18;
+                                opt.innerHTML = "Kiểm toán (K18)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "15":
+                                var opt = document.createElement('option');
+                                opt.value = 19;
+                                opt.innerHTML = "Luật học (K19)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "16":
+                                var opt = document.createElement('option');
+                                opt.value = 22;
+                                opt.innerHTML = "Thương mại điện tử (K22)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "17":
+                                var opt = document.createElement('option');
+                                opt.value = 23;
+                                opt.innerHTML = "Quản trị khách sạn (K23)";
+                                inputMajors.appendChild(opt);
+                                break;
+                           case "18":
+                                var opt = document.createElement('option');
+                                opt.value = 29;
+                                opt.innerHTML = "Khoa học dữ liệu và Phân tích kinh doanh (K29)";
+                                inputMajors.appendChild(opt);
+                                break;
+                  
+                        }
+                   }
+            });
+        }
+    }
+
+    function updateValueAdress() {
+        var inputSpecialized = document.getElementById('inputAddress1');
+        if(inputSpecialized){
+            inputSpecialized.addEventListener('change', function(){
+                 updateValueAdressDistrict(inputSpecialized.value);
+                 updateValueAdressCommune(inputSpecialized.value);
+            });
+        }
+    }
+
+    function updateValueAdressDistrict(value) {
+        var inputMajors = document.getElementById('inputAddress2');
+        if(inputMajors){
+            inputMajors.innerHTML = "";
+            switch (value) {
+                case "43":
+                    var opt = document.createElement('option');
+                    opt.value = "Liên Chiểu";
+                    opt.innerHTML = "Liên Chiểu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thanh Khê";
+                    opt.innerHTML = "Thanh Khê";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hải Châu";
+                    opt.innerHTML = "Hải Châu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Sơn Trà";
+                    opt.innerHTML = "Sơn Trà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ngũ Hành Sơn";
+                    opt.innerHTML = "Ngũ Hành Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cẩm Lệ";
+                    opt.innerHTML = "Cẩm Lệ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Vang";
+                    opt.innerHTML = "Hòa Vang";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "81":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Pleiku";
+                    opt.innerHTML = "Thành phố Pleiku";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã An Khê";
+                    opt.innerHTML = "Thị xã An Khê";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Ayun Pa";
+                    opt.innerHTML = "Thị xã Ayun Pa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "KBang";
+                    opt.innerHTML = "KBang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đăk Đoa";
+                    opt.innerHTML = "Đăk Đoa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Chư Păh";
+                    opt.innerHTML = "Chư Păh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ia Grai";
+                    opt.innerHTML = "Ia Grai";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Mang Yang";
+                    opt.innerHTML = "Mang Yang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Kông Chro";
+                    opt.innerHTML = "Kông Chro";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đức Cơ";
+                    opt.innerHTML = "Đức Cơ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Chư Prông";
+                    opt.innerHTML = "Chư Prông";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Chư Sê";
+                    opt.innerHTML = "Chư Sê";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đăk Pơ";
+                    opt.innerHTML = "Đăk Pơ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ia Pa";
+                    opt.innerHTML = "Ia Pa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Krông Pa";
+                    opt.innerHTML = "Krông Pa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phú Thiện";
+                    opt.innerHTML = "Phú Thiện";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Chư Pưh";
+                    opt.innerHTML = "Chư Pưh";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "36":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Thanh Hóa";
+                    opt.innerHTML = "Thành phố Thanh Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Bỉm Sơn";
+                    opt.innerHTML = "Thị xã Bỉm Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Sầm Sơn";
+                    opt.innerHTML = "Thị xã Sầm Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Mường Lát";
+                    opt.innerHTML = "Mường Lát";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quan Hóa";
+                    opt.innerHTML = "Quan Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bá Phước";
+                    opt.innerHTML = "Bá Phước";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quan Sơn";
+                    opt.innerHTML = "Quan Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lang Chánh";
+                    opt.innerHTML = "Lang Chánh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ngọc Lặc";
+                    opt.innerHTML = "Ngọc Lặc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cẩm Thủy";
+                    opt.innerHTML = "Cẩm Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thạch Thành";
+                    opt.innerHTML = "Thạch Thành";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hà Trung";
+                    opt.innerHTML = "Hà Trung";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Vĩnh Lộc";
+                    opt.innerHTML = "Vĩnh Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Yên Định";
+                    opt.innerHTML = "Yên Định";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thọ Xuân";
+                    opt.innerHTML = "Thọ Xuân";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thường Xuân";
+                    opt.innerHTML = "Thường Xuân";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Triệu Sơn";
+                    opt.innerHTML = "Triệu Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thiệu Hóa";
+                    opt.innerHTML = "Thiệu Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hoằng Hóa";
+                    opt.innerHTML = "Hoằng Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hậu Lộc";
+                    opt.innerHTML = "Hậu Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nga Sơn";
+                    opt.innerHTML = "Nga Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Như Xuân";
+                    opt.innerHTML = "Như Xuân";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Như Thanh";
+                    opt.innerHTML = "Như Thanh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nông Cống";
+                    opt.innerHTML = "Nông Cống";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đông Sơn";
+                    opt.innerHTML = "Đông Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quảng Xương";
+                    opt.innerHTML = "Quảng Xương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tĩnh Gia";
+                    opt.innerHTML = "Tĩnh Gia";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "37":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Vinh";
+                    opt.innerHTML = "Thành phố Vinh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Cửa Lò";
+                    opt.innerHTML = "Thị xã Cửa Lò";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Thái Hòa";
+                    opt.innerHTML = "Thị xã Thái Hòa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quế Phong";
+                    opt.innerHTML = "Quế Phong";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quỳ Châu";
+                    opt.innerHTML = "Quỳ Châu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Kỳ Sơn";
+                    opt.innerHTML = "Kỳ Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tương Dương";
+                    opt.innerHTML = "Tương Dương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nghĩa Đàn";
+                    opt.innerHTML = "Nghĩa Đàn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quỳ Hợp";
+                    opt.innerHTML = "Quỳ Hợp";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quỳnh Lưu";
+                    opt.innerHTML = "Quỳnh Lưu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Con Cuông";
+                    opt.innerHTML = "Con Cuông";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tân Kỳ";
+                    opt.innerHTML = "Tân Kỳ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Anh Sơn";
+                    opt.innerHTML = "Anh Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Diễn Châu";
+                    opt.innerHTML = "Diễn Châu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Yên Thành";
+                    opt.innerHTML = "Yên Thành";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đô Lương";
+                    opt.innerHTML = "Đô Lương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thanh Chương";
+                    opt.innerHTML = "Thanh Chương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nghi Lộc";
+                    opt.innerHTML = "Nghi Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nam Đàn";
+                    opt.innerHTML = "Nam Đàn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hưng Nguyên";
+                    opt.innerHTML = "Hưng Nguyên";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Hoàng Mai";
+                    opt.innerHTML = "Thị xã Hoàng Mai";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "38":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Hà Tĩnh";
+                    opt.innerHTML = "Thành phố Hà Tĩnh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Hồng Lĩnh";
+                    opt.innerHTML = "Thị xã Hồng Lĩnh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hương Sơn";
+                    opt.innerHTML = "Hương Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đức Thọ";
+                    opt.innerHTML = "Đức Thọ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Vũ Quang";
+                    opt.innerHTML = "Vũ Quang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nghi Xuân";
+                    opt.innerHTML = "Nghi Xuân";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Can Lộc";
+                    opt.innerHTML = "Can Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hương Khê";
+                    opt.innerHTML = "Hương Khê";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thạch Hà";
+                    opt.innerHTML = "Thạch Hà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cẩm Xuyên";
+                    opt.innerHTML = "Cẩm Xuyên";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Kỳ Anh";
+                    opt.innerHTML = "Kỳ Anh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lộc Hà";
+                    opt.innerHTML = "Lộc Hà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Kỳ Anh";
+                    opt.innerHTML = "Thị xã Kỳ Anh";
+                    inputMajors.appendChild(opt);
+                    break;     
+                case "73":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Đồng Hới";
+                    opt.innerHTML = "Thành phố Đồng Hới";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Minh Hóa";
+                    opt.innerHTML = "Minh Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tuyên Hóa";
+                    opt.innerHTML = "Tuyên Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quảng Trạch";
+                    opt.innerHTML = "Quảng Trạch";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bố Trạch";
+                    opt.innerHTML = "Bố Trạch";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quảng Ninh";
+                    opt.innerHTML = "Quảng Ninh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lệ Thủy";
+                    opt.innerHTML = "Lệ Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Ba Đồn";
+                    opt.innerHTML = "Thị xã Ba Đồn";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "74":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Đông Hà";
+                    opt.innerHTML = "Thành phố Đông Hà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Quảng Trị";
+                    opt.innerHTML = "Thị xã Quảng Trị";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Vĩnh Linh";
+                    opt.innerHTML = "Vĩnh Linh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hướng Hóa";
+                    opt.innerHTML = "Hướng Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Gio Linh";
+                    opt.innerHTML = "Gio Linh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đa Krông";
+                    opt.innerHTML = "Đa Krông";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cam Lộ";
+                    opt.innerHTML = "Cam Lộ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Triệu Phong";
+                    opt.innerHTML = "Triệu Phong";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hải Lăng";
+                    opt.innerHTML = "Hải Lăng";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "75":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Huế";
+                    opt.innerHTML = "Thành phố Huế";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phong Điền";
+                    opt.innerHTML = "Phong Điền";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quảng Điền";
+                    opt.innerHTML = "Quảng Điền";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phú Vang";
+                    opt.innerHTML = "Phú Vang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Hương Thủy";
+                    opt.innerHTML = "Thị xã Hương Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Hương Trà";
+                    opt.innerHTML = "Thị xã Hương Trà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "A Lưới";
+                    opt.innerHTML = "A Lưới";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phú Lộc";
+                    opt.innerHTML = "Phú Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nam Đông";
+                    opt.innerHTML = "Nam Đông";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "76":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Tam Kỳ";
+                    opt.innerHTML = "Thành phố Tam Kỳ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Hội An";
+                    opt.innerHTML = "Thành phố Hội An";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tây Giang";
+                    opt.innerHTML = "Tây Giang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đông Giang";
+                    opt.innerHTML = "Đông Giang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đại Lộc";
+                    opt.innerHTML = "Đại Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã Điện Bàn";
+                    opt.innerHTML = "Thị xã Điện Bàn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Duy Xuyên";
+                    opt.innerHTML = "Duy Xuyên";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quế Sơn";
+                    opt.innerHTML = "Quế Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nam Giang";
+                    opt.innerHTML = "Nam Giang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phước Sơn";
+                    opt.innerHTML = "Phước Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hiệp Đức";
+                    opt.innerHTML = "Hiệp Đức";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thăng Bình";
+                    opt.innerHTML = "Thăng Bình";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tiên Phước";
+                    opt.innerHTML = "Tiên Phước";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bắc Trà My";
+                    opt.innerHTML = "Bắc Trà My";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nam Trà My";
+                    opt.innerHTML = "Nam Trà My";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Núi Thành";
+                    opt.innerHTML = "Núi Thành";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phú Ninh";
+                    opt.innerHTML = "Phú Ninh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nông Sơn";
+                    opt.innerHTML = "Nông Sơn";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "77":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Quảng Ngãi";
+                    opt.innerHTML = "Thành phố Quảng Ngãi";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bình Sơn";
+                    opt.innerHTML = "Bình Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Trà Bồng";
+                    opt.innerHTML = "Trà Bồng";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tây Trà";
+                    opt.innerHTML = "Tây Trà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Sơn Tịnh";
+                    opt.innerHTML = "Sơn Tịnh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tư Nghĩa";
+                    opt.innerHTML = "Tư Nghĩa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Sơn Hà";
+                    opt.innerHTML = "Sơn Hà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Sơn Tây";
+                    opt.innerHTML = "Sơn Tây";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Minh Long";
+                    opt.innerHTML = "Minh Long";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nghĩa Hành";
+                    opt.innerHTML = "Nghĩa Hành";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Mộ Đức";
+                    opt.innerHTML = "Mộ Đức";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đức Phổ";
+                    opt.innerHTML = "Đức Phổ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ba Tơ";
+                    opt.innerHTML = "Ba Tơ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lý Sơn";
+                    opt.innerHTML = "Lý Sơn";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "92":
+                    var opt = document.createElement('option');
+                    opt.value = "Thành phố Qui Nhơn";
+                    opt.innerHTML = "Thành phố Qui Nhơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "An Lão";
+                    opt.innerHTML = "An Lão";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hoài Nhơn";
+                    opt.innerHTML = "Hoài Nhơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hoài Ân";
+                    opt.innerHTML = "Hoài Ân";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phú Mỹ";
+                    opt.innerHTML = "Phú Mỹ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Vĩnh Thạnh";
+                    opt.innerHTML = "Vĩnh Thạnh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tây Sơn";
+                    opt.innerHTML = "Tây Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phù Cát";
+                    opt.innerHTML = "Phù Cát";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thị xã An Nhơn";
+                    opt.innerHTML = "Thị xã An Nhơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tuy Phước";
+                    opt.innerHTML = "Tuy Phước";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Vân Canh";
+                    opt.innerHTML = "Vân Canh";
+                    inputMajors.appendChild(opt);
+                    break;
+
+
+            }
+                      
+        }
+    }
+
+    function updateValueAdressCommune(value) {
+        var inputMajors = document.getElementById('inputAddress3');
+        if(inputMajors){
+            inputMajors.innerHTML = "";
+            switch (value) 
+            {
+                case "43":
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Bắc";
+                    opt.innerHTML = "Hòa Bắc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Châu";
+                    opt.innerHTML = "Hòa Châu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Khương";
+                    opt.innerHTML = "Hòa Khương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Liên";
+                    opt.innerHTML = "Hòa Liên";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Nhơn";
+                    opt.innerHTML = "Hòa Nhơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Ninh";
+                    opt.innerHTML = "Hòa Ninh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Phong";
+                    opt.innerHTML = "Hòa Phong";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Phú";
+                    opt.innerHTML = "Hòa Phú";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Phước";
+                    opt.innerHTML = "Hòa Phước";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Sơn";
+                    opt.innerHTML = "Hòa Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hòa Tiến";
+                    opt.innerHTML = "Hòa Tiến";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "81":
+                    var opt = document.createElement('option');
+                    opt.value = "Ia KlA";
+                    opt.innerHTML = "Ia KlA";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Chư Đang Ya";
+                    opt.innerHTML = "Chư Đang Ya";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đăk Tơ Ver";
+                    opt.innerHTML = "Đăk Tơ Ver;
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ia Nhin";
+                    opt.innerHTML = "Ia Nhin";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ia Kly";
+                    opt.innerHTML = "Ia Kly";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "An Phú";
+                    opt.innerHTML = "An Phú";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Chư Ă";
+                    opt.innerHTML = "Chư Ă";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Diên Phú";
+                    opt.innerHTML = "Diên Phú";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Biển Hồ";
+                    opt.innerHTML = "Biển Hồ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Gào";
+                    opt.innerHTML = "Gào";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Trà Đa";
+                    opt.innerHTML = "Trà Đa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thành An";
+                    opt.innerHTML = "Thành An";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "75":
+                    var opt = document.createElement('option');
+                    opt.value = "Hải Dương";
+                    opt.innerHTML = "Hải Dương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hương Bình";
+                    opt.innerHTML = "Hương Bình";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phú Sơn";
+                    opt.innerHTML = "Phú Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hương Phong";
+                    opt.innerHTML = "Hương Phong";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lộc Thủy";
+                    opt.innerHTML = "Lộc Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phong Xuân";
+                    opt.innerHTML = "Phong Xuân";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Điền Hải";
+                    opt.innerHTML = "Điền Hải";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thượng Lộ";
+                    opt.innerHTML = "Thượng Lộ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thượng Quảng";
+                    opt.innerHTML = "Thượng Quảng";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hồng Thủy";
+                    opt.innerHTML = "Hồng Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "A Roàng";
+                    opt.innerHTML = "A Roàng";
+                    inputMajors.appendChild(opt);
+                    break;
+                case "37":
+                    var opt = document.createElement('option');
+                    opt.value = "An Hòa";
+                    opt.innerHTML = "An Hòa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lĩnh Sơn";
+                    opt.innerHTML = "Lĩnh Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thọ Sơn";
+                    opt.innerHTML = "Thọ Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bình Chuẩn";
+                    opt.innerHTML = "Bình Chuẩn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lục Dạ";
+                    opt.innerHTML = "Lục Dạ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Môn Sơn";
+                    opt.innerHTML = "Môn Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Diễn Hải";
+                    opt.innerHTML = "Diễn Hải";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Diễn Lộc";
+                    opt.innerHTML = "Diễn Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nam Sơn";
+                    opt.innerHTML = "Nam Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hưng Nghĩa";
+                    opt.innerHTML = "Hưng Nghĩa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Kim Liên";
+                    opt.innerHTML = "Kim Liên";
+                    inputMajors.appendChild(opt);
+                    break;  
+                case "36":
+                    var opt = document.createElement('option');
+                    opt.value = "Cổ Lũng";
+                    opt.innerHTML = "Cổ Lũng";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cẩm Lương";
+                    opt.innerHTML = "Cẩm Lương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đông Khê";
+                    opt.innerHTML = "Đông Khê";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hà Lĩnh";
+                    opt.innerHTML = "Hà Lĩnh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đại Lộc";
+                    opt.innerHTML = "Đại Lộc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hoằng Châu";
+                    opt.innerHTML = "Hoằng Châu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Trí Nang";
+                    opt.innerHTML = "Trí Nang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Mường Lý";
+                    opt.innerHTML = "Mường Lý";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nga An";
+                    opt.innerHTML = "Nga An";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nguyệt Ấn";
+                    opt.innerHTML = "Nguyệt Ấn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thanh Kỳ";
+                    opt.innerHTML = "Thanh Kỳ";
+                    inputMajors.appendChild(opt);
+                    break;  
+                case "38":
+                    var opt = document.createElement('option');
+                    opt.value = "Kim Song Trường";
+                    opt.innerHTML = "Kim Song Trường";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cẩm Hà";
+                    opt.innerHTML = "Cẩm Hà";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bùi La Nhân";
+                    opt.innerHTML = "Bùi La Nhân";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Gia Phố";
+                    opt.innerHTML = "Gia Phố";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Sơn Bằng";
+                    opt.innerHTML = "Sơn Bằng";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Kỳ Châu";
+                    opt.innerHTML = "Kỳ Châu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hộ Độ";
+                    opt.innerHTML = "Hộ Độ";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Xuân Hồng";
+                    opt.innerHTML = "Xuân Hồng";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tân Lâm Hương";
+                    opt.innerHTML = "Tân Lâm Hương";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Thọ Điền";
+                    opt.innerHTML = "Thọ Điền";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đồng Môn";
+                    opt.innerHTML = "Đồng Môn";
+                    inputMajors.appendChild(opt);
+                    break;  
+                case "73":
+                    var opt = document.createElement('option');
+                    opt.value = "Đại Trạch";
+                    opt.innerHTML = "Đại Trạch";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hồng Thủy";
+                    opt.innerHTML = "Hồng Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Dân Hóa";
+                    opt.innerHTML = "Dân Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hồng Hóa";
+                    opt.innerHTML = "Hồng Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hàm Ninh";
+                    opt.innerHTML = "Hàm Ninh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cánh Hóa";
+                    opt.innerHTML = "Cánh Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Châu Hóa";
+                    opt.innerHTML = "Châu Hóa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bảo Ninh";
+                    opt.innerHTML = "Bảo Ninh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quảng Hòa";
+                    opt.innerHTML = "Quảng Hòa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quảng Thủy";
+                    opt.innerHTML = "Quảng Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quảng Trung";
+                    opt.innerHTML = "Quảng Trung";
+                    inputMajors.appendChild(opt);
+                    break;  
+                case "74":
+                    var opt = document.createElement('option');
+                    opt.value = "Cam Chính";
+                    opt.innerHTML = "Cam Chính";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cam Thủy";
+                    opt.innerHTML = "Cam Thủy";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "A Bung";
+                    opt.innerHTML = "A Bung";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Mò Ó";
+                    opt.innerHTML = "Mò Ó";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Gio An";
+                    opt.innerHTML = "Gio An";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hải Ba";
+                    opt.innerHTML = "Hải Ba";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hải Quế";
+                    opt.innerHTML = "Hải Quế";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "A Dơi";
+                    opt.innerHTML = "A Dơi";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Lìa";
+                    opt.innerHTML = "Lìa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Vĩnh Chấp";
+                    opt.innerHTML = "Vĩnh Chấp";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hải Lệ";
+                    opt.innerHTML = "Hải Lệ";
+                    inputMajors.appendChild(opt);
+                    break;      
+                case "76":
+                    var opt = document.createElement('option');
+                    opt.value = "Ba Bích";
+                    opt.innerHTML = "Ba Bích";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ba Vì";
+                    opt.innerHTML = "Ba Vì";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bình Chánh";
+                    opt.innerHTML = "Bình Chánh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Long Mai";
+                    opt.innerHTML = "Long Mai";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đức Chánh";
+                    opt.innerHTML = "Đức Chánh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hành Minh";
+                    opt.innerHTML = "Hành Minh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Sơn Giang";
+                    opt.innerHTML = "Sơn Giang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tịnh Bắc";
+                    opt.innerHTML = "Tịnh Bắc";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hương Sơn";
+                    opt.innerHTML = "Hương Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nghĩa Lâm";
+                    opt.innerHTML = "Nghĩa Lâm";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tịnh Kỳ";
+                    opt.innerHTML = "Tịnh Kỳ";
+                    inputMajors.appendChild(opt);
+                    break;      
+                case "77":
+                    var opt = document.createElement('option');
+                    opt.value = "An Dũng";
+                    opt.innerHTML = "An Dũng";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Ân Đức";
+                    opt.innerHTML = "Ân Đức";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cát Chánh";
+                    opt.innerHTML = "Cát Chánh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Cát Nhơn";
+                    opt.innerHTML = "Cát Nhơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Mỹ Chánh";
+                    opt.innerHTML = "Mỹ Chánh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Bình Nghi";
+                    opt.innerHTML = "Bình Nghi";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Phước Hiệp";
+                    opt.innerHTML = "Phước Hiệp";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Canh Liên";
+                    opt.innerHTML = "Canh Liên";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Vĩnh Thịnh";
+                    opt.innerHTML = "Vĩnh Thịnh";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Nhơn Lý";
+                    opt.innerHTML = "Nhơn Lý";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hoài Hải";
+                    opt.innerHTML = "Hoài Hải";
+                    inputMajors.appendChild(opt);
+                    break;      
+                case "92":
+                    var opt = document.createElement('option');
+                    opt.value = "Duy Nghĩa";
+                    opt.innerHTML = "Duy Nghĩa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Duy Sơn";
+                    opt.innerHTML = "Duy Sơn";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đại Hiệp";
+                    opt.innerHTML = "Đại Hiệp";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Đại Hòa";
+                    opt.innerHTML = "Đại Hòa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "A Ting";
+                    opt.innerHTML = "A Ting";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tà Lu";
+                    opt.innerHTML = "Tà Lu";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Hiệp Hòa";
+                    opt.innerHTML = "Hiệp Hòa";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Trà Cang";
+                    opt.innerHTML = "Trà Cang";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Quế Lâm";
+                    opt.innerHTML = "Quế Lâm";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tam Mỹ Đông";
+                    opt.innerHTML = "Tam Mỹ Đông";
+                    inputMajors.appendChild(opt);
+                    var opt = document.createElement('option');
+                    opt.value = "Tam Mỹ Tây";
+                    opt.innerHTML = "Tam Mỹ Tây";
+                    inputMajors.appendChild(opt);
+                    break;      
+            }
+                      
+        }
+    }
+
+     function updateValueId() 
+    {
+        var inputSpecialized = document.getElementById('inputID');
+        if(inputSpecialized)
+        {
+            inputSpecialized.addEventListener('change', function()
+            {
+                  var inputMajors = document.getElementById('ID');
+                  if(inputMajors)
+                  {
+                     inputMajors.value = this.value;
+                  }
+            });
+        }
+    }
+
+    function alertStatus() 
+    {
+        var status = document.getElementById('status').textContent;
+        if(status == "201"){
+            window.alert("Lưu thành công!");
+        }
+
+        if(status == "301"){
+           window.alert("Thất bại.");
+        }
+    }
+
+    function updateFile() 
+    {
+        var inputSpecialized = document.getElementById('customFile');
+        if(inputSpecialized)
+        {
+            inputSpecialized.addEventListener('change', function()
+            {
+                var inputFilel = document.getElementById('labelFile');
+                if(inputFilel)
+                {
+                    inputFilel.textContent = this.files[0].name;
+                }          
+            });
+        }
+    }
+    
+    window.onload = function() {
+       validateDateInput();
+       updateValueMajor();
+       updateValueAdress();
+       updateValueId();
+       alertStatus();
+       updateFile();
+    }
+    
+</script>

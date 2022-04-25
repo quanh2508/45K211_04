@@ -1,0 +1,73 @@
+body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 100px !important;
+}
+
+
+.carousel-caption {
+    bottom: 40% !important;
+}
+
+.title-slide {
+    color: red;
+    font-weight: 700;
+}
+
+.hr-header {
+    height: 5px;
+    background-color: #25639B;
+}
+
+.bg-blue {
+    background-color: #25639B;
+    color: #ffffff;
+}
+
+.title-column-footer {
+    font-weight: 700;
+}
+
+footer {
+    font-size: 20px;
+}
+
+.mt-50px {
+    margin-top: 50px;
+}
+
+.pl-80px {
+    padding-left: 80px !important;
+}
+
+.inputRequire {
+    color: red;
+}
+.bg-primary {
+    background-color: #25639B !important;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.form-control-lg {
+    font-size: 0.95rem;
+}
+.text-muted {
+    color: #ffffff !important;
+}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KTX1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/KTX1.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <hr class="hr-header my-3" />
+        <div class="row m-3">
+            <div class="col-8">
+                <div>
+                    <img class="d-block w-50" src="/Images/logo.png" alt="First slide"  asp-area="" asp-controller="Home" asp-action="Index" />
+                </div>
+            </div>
+            <div class="col-4">
+                <nav class="navba navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3r navbar-expand-lg">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" >Trang chủ <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/#intro">Giới thiệu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"  asp-area="" asp-controller="Home" asp-action="Privacy">Đăng ký</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" >Đăng nhập</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top text-muted bg-blue">
+        <div class="row px-3 pt-3">
+            <div class="col-8 pl-80px">
+                <p class="title-column-footer">Trung tâm Hỗ trợ sinh viên và Quan hệ doanh nghiệp</p>
+                <p>Trường Đại học Kinh tế - Đại học Đà Nẵng</p>
+                <p>71 Ngũ Hành Sơn, Tp Đà Nẵng</p>
+                <p>kytucxa@due.edu.vn</p>
+                <p>ĐT:02363953773</p>
+            </div>
+            <div class="col-4 px-3">
+                <p class="title-column-footer">Thời gian tiếp nhận sinh viên đăng ký</p>
+                <p>Thứ Hai - thứ Sáu:</p>
+                <p>07h30 - 11h30 ; 13h30 - 17h30</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <p>" &copy; 2022 - SSERC - Đồng hành cùng Sinh viên và Doanh nghiệp"</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
