@@ -3,7 +3,7 @@
 }
 
 @{
-     ViewData["Title"] = "Đăng nhập";
+     ViewData["Title"] = "Đăng ký";
      ViewData["Content"] = "ĐĂNG KÝ CHỖ Ở TẠI KÝ TÚC XÁ TRƯỜNG ĐẠI HỌC KINH TẾ - ĐẠI HỌC ĐÀ NẴNG";
      ViewData["Note"] = "Đề nghị sinh viên điền thông tin trung thực và chính xác";
     
@@ -52,15 +52,16 @@
                                 <input type="text" class="form-control" id="inputPhone"  maxlength="13" minlength="10" name="StudentPhone" required onpast="return false;" onKeyPress="return isNumber(event);">
                         </div>
 
-                        <label for="inputSex">Giới tính (<span class="inputRequire">*</span>)</label>
-                        <select class="form-control" id="inputSex" required name="StudentSex">
-                            <option  selected></option>
-                            <option value="true">Nam</option>
-                            <option value="false">Nữ</option>
-                        </select>
+                        <div class="form-group">
+                                <label for="inputSex">Giới tính (<span class="inputRequire">*</span>)</label>
+                                <select class="form-control" id="inputSex" required name="StudentSex">
+                                    <option  selected></option>
+                                    <option value="true">Nam</option>
+                                    <option value="false">Nữ</option>
+                                </select>
+                        </div>
 
-                        
-                         <div class="form-group">
+                        <div class="form-group">
                                 <label for="inputURL">Link Facebook (<span class="inputRequire">*</span>)</label>
                                 <input type="url" class="form-control" id="inputURL"  name="StudentLink" required>
                         </div>
